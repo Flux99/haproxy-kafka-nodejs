@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  read:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT= 3000
+      - MONGO_URI=mongodb://mongo4:27017/myotherdatabase
+      - WEATHER_API_KEY=eab290b649b641d1a2b114914232103
+      - WEATHER_API=http://api.weatherapi.com/v1/current.json?key=eab290b649b641d1a2b114914232103&q=
+    depends_on:
+      - mongo4
+  mongo4:
+    image: mongo:latest
+    container_name: mongo4
+    ports:
+      - "27016:27017"

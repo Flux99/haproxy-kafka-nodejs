@@ -1,0 +1,46 @@
+# version: '3.2'
+
+# services:
+#   zookeeper:
+#     image: 'zookeeper:3.7'
+#     ports:
+#       - "2181:2181"
+#     environment:
+#       ZOO_MY_ID: 1
+#       ZOO_SERVERS: server.1=zookeeper:2888:3888
+
+#   kafka:
+#     image: confluentinc/cp-kafka:latest
+#     depends_on:
+#       - zookeeper
+#     ports:
+#       - "9092:9092"
+#     environment:
+#       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+#       - ALLOW_PLAINTEXT_LISTENER=yes
+#       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+#       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+
+version: '2'
+services:
+  zookeeper: # name of the container 
+    image: confluentinc/cp-zookeeper:latest # name of the image we #want to pull from dockerhub
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181  # port on the system: port of docker
+  
+  kafka: # name of the container 
+    image: confluentinc/cp-kafka:latest # name of the image we want #to pull from dockerhub
+    depends_on:
+      - zookeeper # here we're kinda importing/refering this image
+    ports:
+      - 29092:29092 # port on the system: port of docker
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1

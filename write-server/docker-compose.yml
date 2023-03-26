@@ -1,0 +1,13 @@
+version: "3"
+services:
+    write_server_1:
+        build: .
+        ports: 
+            - '4000:4000'
+        environment:
+          - MONGO_URI=mongodb://mongo2:27017/mydatabase
+    mongo:
+        container_name: mongo2
+        image: mongo
+        ports:
+            - '27019:27017'
