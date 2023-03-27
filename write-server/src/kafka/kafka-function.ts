@@ -87,15 +87,3 @@ export const producer = async (part:number,value:object) => {
     }
     
 }
-interface userInfo {
-    name: String,
-    location: String
-    }
-    enum location  {
-        USA= "usa",
-        CANADA= "canada"
-    }
-    const user: userInfo={
-        name:"abc",
-        location:"usa"
-    }
