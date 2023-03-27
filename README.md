@@ -4,11 +4,11 @@
 
 #### This a fully scalable project Read & Write Server,where two services(write service & read server),which talks to eachother asynchronously via kafka distributed streaming process.
 
-### For better understanding of kafka checkout my ![blog](https://singhabhishek.hashnode.dev/demystifying-kafka-understanding-producers-consumers-brokers-and-more).
+### For better understanding of kafka checkout my ![here](https://singhabhishek.hashnode.dev/demystifying-kafka-understanding-producers-consumers-brokers-and-more).
 
 ### System Design
  
-![Screenshot_1](https://github.com/Flux99/College-Database-Management/blob/master/Screenshots/Screenshot_2.jpeg?raw=true)
+![Screenshot_1](https://github.com/Flux99/haproxy-kafka-nodejs/blob/main/System-design-diagram/kafk-haproxy-diagram.jpg?raw=true)
 
 
 
