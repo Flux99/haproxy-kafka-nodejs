@@ -8,7 +8,7 @@
 
 ### System Design
  
-![Screenshot_1](https://github.com/Flux99/haproxy-kafka-nodejs/blob/main/System-design-diagram/kafk-haproxy-diagram.jpg?raw=true)
+![Screenshot_1](https://github.com/Flux99/haproxy-kafka-nodejs/blob/main/System-design-diagram/haproxy-kafka-1%20(1).jpg?raw=true)
 
 
 
