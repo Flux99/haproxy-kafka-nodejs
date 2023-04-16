@@ -1,4 +1,4 @@
-# haproxy-kafka-nodejs# E-Commerce Backend apis
+# haproxy-kafka-nodejs#
 
 ## Description
 

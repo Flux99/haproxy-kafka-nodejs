@@ -5,20 +5,21 @@ import {consumer} from "./kafka-function";
 // import {get_city_weather} from "../../write-server/src/helper-function";
 import { User } from "./model/User";
 import { getUser } from "./middleware-validation";
-const port = process.env.PORT;
+const port = process.env.PORT ?? 3000;
 
 
-console.log("mongo env read server", process.env.MONGO_URI);
 
-mongoose.connect(process.env.MONGO_URI)
-.then(async () => {
-console.log('Connected to MongoDB')
-})
-.catch((err) => console.error('Error connecting to MongoDB:', err));
 
-consumer();
+// consumer();
 app.get("/",async (req,res)=>{
     // const db = await connect();
+    console.log("mongo env read server", process.env.MONGO_URI);
+    const data = await mongoose.connect(process.env.MONGO_URI!);
+// .then(async () => {
+// console.log('Connected to MongoDB')
+// })
+// .catch((err) => console.error('Error connecting to MongoDB:', err));
+
     return res.send({message: "server running on port 3000"})
 })
 

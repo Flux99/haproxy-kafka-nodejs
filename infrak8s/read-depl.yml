@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: read-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: read
+  template:
+    metadata:
+      labels:
+        app: read
+    spec:
+      containers:
+        - name: read
+          image: drparadox/read
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://read-mongo-srv:27017/read'
+          volumeMounts:
+                - name: longhorn-pv
+                  mountPath: /data
+      volumes:
+        - name: longhorn-pv
+          persistentVolumeClaim:
+            claimName: longhorn-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: read-srv
+spec:
+  selector:
+    app: read
+  ports:
+    - name: read
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

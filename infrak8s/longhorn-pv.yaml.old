@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: longhorn-pv
+spec:
+  storageClassName: longhorn
+  capacity:
+    storage: 5Mi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  # Set the volumeHandle to the name of the Longhorn volume you want to use
+  # This can be found in the Longhorn UI or by running 'kubectl get volumes'
+  csi:
+    driver: io.rancher.longhorn
+    volumeHandle: my-volume-name
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: longhorn-pvc
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Mi
